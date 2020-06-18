@@ -9,7 +9,11 @@
         <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
       </h3>
       <div class="post_content summary">
-        {{ .Summary }}
+        {{ if hasPrefix .File.Dir "private/" }}
+        <a href="{{ .Permalink }}">学科アカウントログイン後閲覧可能です</a>
+        {{ else }}
+          {{ .Summary }}
+        {{ end }}
 				{{ if .Truncated }}
 					<span class="hellip">&hellip;</span>
 				{{ end }}
